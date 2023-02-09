@@ -1,7 +1,25 @@
-﻿
+﻿@model IEnumerable<BasicASPTutorial.Models.Student>;  //import model  IEnumerable คือ ทำให้เป็น List
+
 @{
     ViewData["Title"] = "หน้าแรก";
 }
 
-<h1 class="text-center" style="color:red">คะแนนสอบ วิชาคอมพิวเตอร์</h1>
+<h1 class="text-center" style="color:gray">คะแนนสอบ วิชาคอมพิวเตอร์</h1>
+
+@foreach(var student in Model)
+{
+    <div>
+        <p>รหัสนักเรียน : @student.Id</p>
+        <p>ชื่อ : @student.Name</p>
+        <p>คะแนนสอบ : @student.Score</p>
+        @if(student.Score >= 50)
+        {
+            <strong class="text-sucess">สอบผ่าน</strong>
+        }else
+        {
+            <strong class="text-danger">สอบไม่ผ่าน</strong>
+        }
+        <hr />
+    </div>
+}
 
