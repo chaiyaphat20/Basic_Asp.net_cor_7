@@ -23,7 +23,8 @@
                 <td>@student.Name</td>
                 <td>@student.Score</td>
                 <td>
-                    <a class="btn btn-warning">แก้ไข</a>
+                    @* เมื่อกด มันจะ เปลี่ยน หน้าไปที่  https://localhost:7160/Student/Edit/1   Edit มาจาก action, id มาจาก route-id*@
+                    <a class="btn btn-warning" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">แก้ไข</a>
                 </td>
                 <td>
                     <a class="btn btn-danger">ลบ</a>
