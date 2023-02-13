@@ -5,32 +5,43 @@
 }
 
 <h1 class="text-center" style="color:gray">คะแนนสอบ วิชาคอมพิวเตอร์</h1>
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th>รหัสนักเรียน</th>
-            <th>ชื่อนักเรียน</th>
-            <th>คะแนนสอบ</th>
-            <th>แก้ไข</th>
-            <th>ลบ</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var student in Model)
-        {
+@if(Model.Count() > 0)
+{
+    <table class="table table-dark">
+        <thead>
             <tr>
-                <td>@student.Id</td>
-                <td>@student.Name</td>
-                <td>@student.Score</td>
-                <td>
-                    @* เมื่อกด มันจะ เปลี่ยน หน้าไปที่  https://localhost:7160/Student/Edit/1   Edit มาจาก action, id มาจาก route-id*@
-                    <a class="btn btn-warning" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">แก้ไข</a>
-                </td>
-                <td>
-                    <a class="btn btn-danger" asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id">ลบ</a>
-                </td>
+                <th>รหัสนักเรียน</th>
+                <th>ชื่อนักเรียน</th>
+                <th>คะแนนสอบ</th>
+                <th>แก้ไข</th>
+                <th>ลบ</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Score</td>
+                    <td>
+                        @* เมื่อกด มันจะ เปลี่ยน หน้าไปที่  https://localhost:7160/Student/Edit/1   Edit มาจาก action, id มาจาก route-id*@
+                        <a class="btn btn-warning" asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id">แก้ไข</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger"
+                   asp-controller="Student"
+                   asp-action="Delete"
+                   asp-route-id="@student.Id"
+                   onclick="return confirm('คถณต้องการลบ @student.Name หรือไม่?')">ลบ</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary">ไม่พบข้อมูลนักเรียนในระบบ</div>
+}
 
