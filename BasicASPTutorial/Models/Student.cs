@@ -7,11 +7,11 @@ namespace BasicASPTutorial.Models
     {
         [Key]  //primaryKey
         public int Id { get; set; }
-        [Required]  //none null
+        [Required(ErrorMessage ="กรุณาป้อนชื่อนักเรียน")]  //none null
         [DisplayName("ชื่อนักเรียน")]
         public string Name { get; set; }
         [DisplayName("คะแนนสอบ")]
-        [Range(0,100)]
+        [Range(0,100,ErrorMessage ="กรุณาป้อนคะแนนในช่วง 0-100")]
         public int Score { get; set; }
     }
 }
