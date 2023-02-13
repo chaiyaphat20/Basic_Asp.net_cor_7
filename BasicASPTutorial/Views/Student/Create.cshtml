@@ -1,7 +1,24 @@
-﻿
+﻿@model Student   //ทำให้ใช้ asp-for="Name" ,asp-for="Score" asp-for สำหรับกำหนดตัวแปรที่จะเก็บค่าที่ถูกเลือกไว้
+
 @{
     ViewData["Title"] = "บันทึกข้อมูล";
 }
 
 <h1 class="text-center">บันทึกข้อมูล</h1>
+<form method="POST" asp-controller="Student" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name"></label> 
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    @*
+        ทำให้ใช้ asp-for="Name" ,asp-for="Score" asp-for สำหรับกำหนดตัวแปรที่จะเก็บค่าที่ถูกเลือกไว้ 
+        ถ้า พิมพ์ Name:Art, Score:20  กด Submit จะเรียก Method Get และได้ ค่า ด้านล่าง
+        https://localhost:44336/Student/Create?Name=art&Score=20
+    *@
 
+    <div class="form-group">
+        <label asp-for="Score"></label>
+        <input type="number" asp-for="Score" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary my-2" >บันทึก</button>
+</form>

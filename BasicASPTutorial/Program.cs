@@ -1,7 +1,15 @@
+using BasicASPTutorial.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(); //Set ให้ Controller และ View ทำงาน
+
+//เชื่อมค่อ ฐานข้อมูล
+builder.Services.AddDbContext<ApplicationDBContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 var app = builder.Build();
 
